@@ -9,11 +9,6 @@ __version__ = '1.0.0'
 parser = argparse.ArgumentParser(prog='v2ray',description='A simple program to extract v2ray and mtproto proxies from multiple telegram channels')
 parser.add_argument('-v','--v2ray', action='store_true', help='Extract v2ray proxies')
 parser.add_argument('-m','--mtproto', action='store_true', help='Extract mtproto proxies')
-
-if len(sys.argv) == 1:
-    parser.print_help()
-    sys.exit(1)
-
 args = parser.parse_args()
 
 session_name = 'session_name.session'
