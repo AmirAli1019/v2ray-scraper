@@ -21,3 +21,10 @@ Command Line Options
 ------|------|
 |`-v,--v2ray`|Extract v2ray proxies|
 |`-m,--mtproto`|Extract mtproto proxies|
+
+⚠️ Disclaimer
+---
+
+The author does **not** support any use of this tool for censorship, surveillance, or any form of human rights violation.
+
+By using this code, you agree to take full responsibility for how it is used.
