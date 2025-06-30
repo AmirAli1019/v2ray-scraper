@@ -4,6 +4,8 @@ from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.errors import ChannelPrivateError, PeerIdInvalidError
 import random, json, os, extractors, sys
 
+__version__ = '1.0.0'
+
 parser = argparse.ArgumentParser(prog='v2ray',description='A simple program to extract v2ray and mtproto proxies from multiple telegram channels')
 parser.add_argument('-v','--v2ray', action='store_true', help='Extract v2ray proxies')
 parser.add_argument('-m','--mtproto', action='store_true', help='Extract mtproto proxies')

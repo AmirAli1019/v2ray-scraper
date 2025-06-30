@@ -13,6 +13,8 @@ In the file `channels.json` you see the list of telegram channels and the `api_h
 
 You need `api_hash` and `api_id` for connecting to telegram using this app. To get them go to `my.telegram.org` and login to your account, then go to `API Developement Tools` and fill the form. Now you can get your own `api_hash` and `api_id`. Paste then within the `channels.json` file in the specified fields.
 
+Now you are ready to run `src/v2ray.py`.
+
 Command Line Options
 ---
 |option|description|
