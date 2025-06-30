@@ -2,7 +2,7 @@ import argparse,asyncio
 from telethon.sync import TelegramClient
 from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.errors import ChannelPrivateError, PeerIdInvalidError
-import random, json, os, extractors, sys
+import random, json, os, extractors
 
 __version__ = '1.0.0'
 
