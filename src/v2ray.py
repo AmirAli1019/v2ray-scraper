@@ -20,6 +20,26 @@ channels = list(channels.items())
 random.shuffle(channels)
 channels = dict(channels)
 
+def handle_proxies_output(result_text):
+    if not args.no_save_messages:
+        with open(args.text_file, "w", encoding="utf-8") as f:
+            f.write(result_text)
+
+        print(f"\nOperation finished. All messages have been saved to '{args.text_file}'.")
+
+    proxies = ''
+    if args.v2ray:
+        proxies += extractors.extract_v2ray_proxies(result_text) + '\n\n'
+
+    if args.mtproto:
+        proxies += extractors.extract_mtproto_proxies(result_text)
+
+    if args.auto_copy:
+        copy(proxies)
+            
+    print(proxies)
+
+
 async def main():
     result_text = ""
     for channel_identifier in channels:
@@ -63,25 +83,7 @@ async def main():
             print(error_msg)
             result_text += f"\n\n--- Channel: {channel_identifier} ---\n{error_msg}\n"
 
-    if not args.no_save_messages:
-        with open(args.text_file, "w", encoding="utf-8") as f:
-            f.write(result_text)
-
-        print(f"\nOperation finished. All messages have been saved to '{args.text_file}'.")
-
-    if args.v2ray:
-        v2ray_proxies = extractors.extract_v2ray_proxies(result_text)
-        print(v2ray_proxies)
-
-        if args.auto_copy:
-            copy(v2ray_proxies)
-
-    if args.mtproto:
-        mtproto_proxies = extractors.extract_mtproto_proxies(result_text)
-        print(mtproto_proxies)
-
-        if args.auto_copy:
-            copy(mtproto_proxies)
+    handle_proxies_output(result_text)
 
 with TelegramClient(session_name, api['api_id'], api['api_hash']) as client:
     client.loop.run_until_complete(main())
