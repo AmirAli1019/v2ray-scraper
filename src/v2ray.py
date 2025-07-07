@@ -1,17 +1,16 @@
-import argparse,asyncio
+__version__ = '1.1.0'
+
+import asyncio
 from telethon.sync import TelegramClient
 from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.errors import ChannelPrivateError, PeerIdInvalidError
 import random, json, os, extractors
+from args import args
 
-__version__ = '1.0.0'
+if args.auto_copy:
+    from pyperclip import copy
 
-parser = argparse.ArgumentParser(prog='v2ray',description='A simple program to extract v2ray and mtproto proxies from multiple telegram channels')
-parser.add_argument('-v','--v2ray', action='store_true', help='Extract v2ray proxies')
-parser.add_argument('-m','--mtproto', action='store_true', help='Extract mtproto proxies')
-args = parser.parse_args()
-
-session_name = 'session_name.session'
+session_name = args.session
 
 channels_path = os.path.join(os.path.dirname(__file__), 'channels.json')
 with open(channels_path) as f:
@@ -64,18 +63,25 @@ async def main():
             print(error_msg)
             result_text += f"\n\n--- Channel: {channel_identifier} ---\n{error_msg}\n"
 
-    with open("all_channel_messages.txt", "w", encoding="utf-8") as f:
-        f.write(result_text)
+    if not args.no_save_messages:
+        with open(args.text_file, "w", encoding="utf-8") as f:
+            f.write(result_text)
 
-    print("\nOperation finished. All messages have been saved to 'all_channel_messages.txt'.")
+        print(f"\nOperation finished. All messages have been saved to '{args.text_file}'.")
 
     if args.v2ray:
         v2ray_proxies = extractors.extract_v2ray_proxies(result_text)
         print(v2ray_proxies)
 
+        if args.auto_copy:
+            copy(v2ray_proxies)
+
     if args.mtproto:
         mtproto_proxies = extractors.extract_mtproto_proxies(result_text)
         print(mtproto_proxies)
+
+        if args.auto_copy:
+            copy(mtproto_proxies)
 
 with TelegramClient(session_name, api['api_id'], api['api_hash']) as client:
     client.loop.run_until_complete(main())
