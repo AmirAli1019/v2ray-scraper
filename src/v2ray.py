@@ -22,10 +22,10 @@ channels = dict(channels)
 
 def handle_proxies_output(result_text):
     if not args.no_save_messages:
-        with open(args.text_file, "w", encoding="utf-8") as f:
+        with open(args.messages_file, "w", encoding="utf-8") as f:
             f.write(result_text)
 
-        print(f"\nOperation finished. All messages have been saved to '{args.text_file}'.")
+        print(f"\nOperation finished. All messages have been saved to '{args.messages_file}'.")
 
     proxies = ''
     if args.v2ray:
