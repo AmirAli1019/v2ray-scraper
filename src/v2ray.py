@@ -5,6 +5,7 @@ from telethon.sync import TelegramClient
 from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.errors import ChannelPrivateError, PeerIdInvalidError
 import random, json, os, extractors
+
 from args import args
 
 if args.auto_copy:
@@ -25,7 +26,7 @@ def handle_proxies_output(result_text):
         with open(args.messages_file, "w", encoding="utf-8") as f:
             f.write(result_text)
 
-        print(f"\nOperation finished. All messages have been saved to '{args.messages_file}'.")
+        print(f'\nAll messages have been saved to {args.messages_file!r}.')
 
     proxies = ''
     if args.v2ray:
@@ -37,11 +38,16 @@ def handle_proxies_output(result_text):
     if args.auto_copy:
         copy(proxies)
 
+        print('All extracted proxy configs have been copied to clipboard')
+
     if args.save_extracted:
         with open(args.save_extracted,'w',encoding='utf-8') as f:
             f.write(proxies)
-            
-    print(proxies)
+        
+        print(f'All extracted proxy configs have been save to {args.save_extracted!r}')
+
+    if args.print_proxies:
+        print(proxies)
 
 
 async def main():
@@ -82,6 +88,7 @@ async def main():
             error_msg = f"Error: Channel '{channel_identifier}' is private or could not be found. Please ensure you are a member or the username is correct."
             print(error_msg)
             result_text += f"\n\n--- Channel: {channel_identifier} ---\n{error_msg}\n"
+
         except Exception as e:
             error_msg = f"An unexpected error occurred for '{channel_identifier}': {type(e).__name__} - {e}"
             print(error_msg)

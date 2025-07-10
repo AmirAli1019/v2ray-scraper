@@ -32,6 +32,7 @@ Command Line Options
 |`-f,--messages-file`|The name of the file to save channels messages (default: channels_messages.txt)|
 |`-c,--auto-copy`|Automatically copy extracted proxies to clipboard|
 |`-e,--save-extracted`|Save the extracted proxies in a file|
+|`-p,--print-proxies`|Print the extracted proxy configurations to the console|
 |`-h,--help`|Show the help message and exit|
 
 ⚠️ Disclaimer
