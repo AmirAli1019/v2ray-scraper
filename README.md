@@ -29,8 +29,9 @@ Command Line Options
 |`-m,--mtproto`|Extract mtproto proxies|
 |`-s,--session`|The name of the session file (default: session_name.session)|
 |`-n,--no-save-messages`|Do not save the full messages of proxy channels to a file|
-|`-f,--text-file`|The name of the file to save channels messages (default: channels_messages.txt)|
+|`-f,--messages-file`|The name of the file to save channels messages (default: channels_messages.txt)|
 |`-c,--auto-copy`|Automatically copy extracted proxies to clipboard|
+|`-e,--save-extracted`|Save the extracted proxies in a file|
 |`-h,--help`|Show the help message and exit|
 
 ⚠️ Disclaimer

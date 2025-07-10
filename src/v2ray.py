@@ -1,4 +1,4 @@
-__version__ = '1.1.0'
+__version__ = '1.2.0'
 
 import asyncio
 from telethon.sync import TelegramClient
@@ -36,6 +36,10 @@ def handle_proxies_output(result_text):
 
     if args.auto_copy:
         copy(proxies)
+
+    if args.save_extracted:
+        with open(args.save_extracted,'w',encoding='utf-8') as f:
+            f.write(proxies)
             
     print(proxies)
 
