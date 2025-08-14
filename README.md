@@ -24,7 +24,7 @@ Now you are ready to run `src/v2ray.py`.
 Command Line Options
 ---
 |option|description|
-------|------|
+|------|------|
 |`-v,--v2ray`|Extract v2ray proxies|
 |`-m,--mtproto`|Extract mtproto proxies|
 |`-s,--session`|The name of the session file (default: session_name.session)|
