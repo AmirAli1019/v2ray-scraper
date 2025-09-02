@@ -1,28 +1,44 @@
-# v2ray
+# v2ray Scraper
 
-This Python script connects to multiple Telegram channels and scrapes their recent messages to extract proxy configurations, including **V2Ray** and **MTProto** links.
+This Python script connects to multiple Telegram channels and extracts proxy configurations from recent messages, including **V2Ray** and **MTProto** links.
 
-To use it first install `telethon` package using this command:
-```
+---
+
+## 🚀 Installation
+
+First, install the required dependencies:
+
+```bash
 pip install telethon
-# or
-python -m pip install telethon
-```
-
-In the file `channels.json` you can see the list of telegram channels and the `api_hash` and `api_id`. In the channels section the numbers in front of the links is the number of recent messages to read. You add or remove channels to the list and change the message limit numbers.
-
-You need `api_hash` and `api_id` for connecting to telegram using this app. By default it uses telegram desktop API keys and you can use them without any problem. But you can change them in `channels.json` file if you want.
-
-It can automatically copy extracted proxies into the clipboard with the argument `-c`. To use you need to first install `pyperclip` package:
-
-```
+# optional (for clipboard support)
 pip install pyperclip
 ```
 
-Now you are ready to run `src/v2ray.py`.
+## ⚙️ Configuration
 
-Command Line Options
----
+The configuration file is channels.json.
+
+- It contains:
+
+    - A list of Telegram channels.
+
+    - api_id and api_hash (needed for Telegram API authentication).
+
+    - For each channel, you can specify how many recent messages to fetch.
+
+By default, the script uses Telegram Desktop API keys, so you can run it without changes.
+However, you may replace them with your own api_id and api_hash if needed.
+
+## ▶️ Usage
+
+Run the script:
+
+```bash
+python src/v2ray.py [options]
+```
+
+## Command Line Options
+
 |option|description|
 |------|------|
 |`-v,--v2ray`|Extract v2ray proxies|
@@ -35,9 +51,15 @@ Command Line Options
 |`-p,--print-proxies`|Print the extracted proxy configurations to the console|
 |`-h,--help`|Show the help message and exit|
 
-⚠️ Disclaimer
----
+## 📋 Example
 
-I do **not** support any use of this tool for censorship, surveillance, or any form of human rights violation.
+```bash
+# Extract V2Ray proxies, copy them to clipboard, and print to console
+python src/v2ray.py -v -c -p
+```
+
+## ⚠️ Disclaimer
+
+I do not support any use of this tool for censorship, surveillance, or any form of human rights violation.
 
 By using this code, you agree to take full responsibility for how it is used.
