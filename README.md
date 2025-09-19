@@ -50,6 +50,31 @@ python src/v2ray.py [options]
 |`-e,--save-extracted`|Save the extracted proxies in a file|
 |`-p,--print-proxies`|Print the extracted proxy configurations to the console|
 |`-h,--help`|Show the help message and exit|
+|`-d`,`--disable-delay`|disables the delays between connections to different telegram channels (not recommended!)|
+
+## Termux Support
+
+You can use `v2ray-scraper` on android using Termux. First download it from [f-droid](https://f-droid.org/packages/com.termux/).
+Then clone the repo and install python3:
+
+```bash
+pkg install git python3
+git clone https://github.com/amirali104/v2ray-scraper
+```
+
+Next, install `telethon`:
+
+```bash
+pip install telethon
+```
+
+But if you want clipboard support you cannot use `pyperclip` for that. Instead install [Termux:API](https://f-droid.org/packages/com.termux.api/) from F-Droid and the package `termux-api` on termux:
+
+```bash
+pkg install termux-api
+```
+
+Then you can run it on your mobile in the same way you run it on your computer.
 
 ## 📋 Example
 

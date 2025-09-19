@@ -26,4 +26,7 @@ parser.add_argument('-e','--save-extracted',help='Save the extracted proxies in 
 parser.add_argument('-p','--print-proxies',
                     help='Print the extracted proxy configurations to the console', action='store_true')
 
+parser.add_argument('-d', '--disable-delay', action='store_true',
+                    help = 'disables the random delays between connections to different telegram channels (not recommended!)')
+
 args = parser.parse_args()

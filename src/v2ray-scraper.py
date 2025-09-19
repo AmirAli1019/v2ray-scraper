@@ -1,25 +1,47 @@
-__version__ = '1.2.0'
+__version__ = '1.3.0'
 
-import asyncio
+from cli_args import args
+
+import asyncio, subprocess
 from telethon.sync import TelegramClient
 from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.errors import ChannelPrivateError, PeerIdInvalidError
 import random, json, os, extractors
 
-from args import args
+# --- termux support ---
+
+def is_termux():
+    is_android = subprocess.check_output(["uname", "-o"]).decode().strip() == "Android"
+    termux_path_exists = os.path.isdir("/data/data/com.termux/files/usr/bin")
+
+    return is_android and termux_path_exists
+
+def termux_copy(proxies : str):
+    subprocess.run("termux-clipboard-set", input=proxies.encode())
+
+# --- checking for auto copy option enabled and the platform working on ---
 
 if args.auto_copy:
-    from pyperclip import copy
+    if is_termux():
+        copy_function = termux_copy
+    else:
+        copy_function = __import__('pyperclip').copy
 
 session_name = args.session
+
+# --- loads channels list and API keys ---
 
 channels_path = os.path.join(os.path.dirname(__file__), 'channels.json')
 with open(channels_path) as f:
     channels,api = json.load(f)
 
+# --- shuffles the channels list randomly ---
+
 channels = list(channels.items())
 random.shuffle(channels)
 channels = dict(channels)
+
+# ----------------------------
 
 def handle_proxies_output(result_text):
     if not args.no_save_messages:
@@ -36,7 +58,7 @@ def handle_proxies_output(result_text):
         proxies += extractors.extract_mtproto_proxies(result_text)
 
     if args.auto_copy:
-        copy(proxies)
+        copy_function(proxies)
 
         print('All extracted proxy configs have been copied to clipboard')
 
@@ -49,6 +71,7 @@ def handle_proxies_output(result_text):
     if args.print_proxies:
         print(proxies)
 
+# --- the main program ---
 
 async def main():
     result_text = ""
@@ -57,7 +80,8 @@ async def main():
             print(f"Attempting to connect to channel: {channel_identifier} ...")
             channel = await client.get_entity(channel_identifier)
 
-            await asyncio.sleep(random.uniform(1,1.6))
+            if not args.disable_delay:
+                await asyncio.sleep(random.uniform(1,1.6))
 
             history = await client(GetHistoryRequest(
                 peer=channel,
