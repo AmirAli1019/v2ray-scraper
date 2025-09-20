@@ -1,4 +1,4 @@
-__version__ = '1.3.0'
+__version__ = '1.3.1'
 
 from cli_args import args
 
@@ -21,11 +21,20 @@ def termux_copy(proxies : str):
 
 # --- checking for auto copy option enabled and the platform working on ---
 
+copy_function = None
+
+def set_copy_function():
+    global copy_function
+
+    if os.name == 'posix':
+        if is_termux():
+            copy_function = termux_copy
+            return
+
+    copy_function = __import__('pyperclip').copy
+
 if args.auto_copy:
-    if is_termux():
-        copy_function = termux_copy
-    else:
-        copy_function = __import__('pyperclip').copy
+    set_copy_function()
 
 session_name = args.session
 
