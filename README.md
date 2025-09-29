@@ -49,8 +49,9 @@ python src/v2ray.py [options]
 |`-c,--auto-copy`|Automatically copy extracted proxies to clipboard|
 |`-e,--save-extracted`|Save the extracted proxies in a file|
 |`-p,--print-proxies`|Print the extracted proxy configurations to the console|
-|`-h,--help`|Show the help message and exit|
 |`-d`,`--disable-delay`|disables the delays between connections to different telegram channels (not recommended!)|
+|`-r, --retries`|Set the number of retries when the connection to the telegram server is lost. (default: infinite).|
+|`-h,--help`|Show the help message and exit|
 
 ## Termux Support
 

@@ -1,4 +1,4 @@
-__version__ = '1.3.1'
+__version__ = '1.3.2'
 
 from cli_args import args
 
@@ -129,5 +129,8 @@ async def main():
 
     handle_proxies_output(result_text)
 
-with TelegramClient(session_name, api['api_id'], api['api_hash']) as client:
-    client.loop.run_until_complete(main())
+try:
+    with TelegramClient(session_name, api['api_id'], api['api_hash'], connection_retries=args.retries) as client:
+        client.loop.run_until_complete(main())
+except ConnectionError as err_msg:
+    print(err_msg)

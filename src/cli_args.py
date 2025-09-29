@@ -29,4 +29,7 @@ parser.add_argument('-p','--print-proxies',
 parser.add_argument('-d', '--disable-delay', action='store_true',
                     help = 'disables the random delays between connections to different telegram channels (not recommended!)')
 
+parser.add_argument('-r', '--retries', type=int, default=None,
+                    help='Set the number of retries when the connection to the telegram server is lost. (default: infinite).')
+
 args = parser.parse_args()
