@@ -6,7 +6,15 @@ This Python script connects to multiple Telegram channels and extracts proxy con
 
 ## 🚀 Installation
 
-First, install the required dependencies:
+Fisrt, clone the repository:
+
+```bash
+git clone https://github.com/AmirAli104/v2ray-scraper
+```
+
+Or as a better option download the lastest release from the [releases](https://github.com/AmirAli104/v2ray-scraper/releases) page.
+
+Install the required dependencies:
 
 ```bash
 pip install telethon
