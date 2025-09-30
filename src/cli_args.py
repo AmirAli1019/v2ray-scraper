@@ -1,6 +1,7 @@
-import argparse
+import argparse, subprocess, os
+from urllib.parse import urlparse
 
-parser = argparse.ArgumentParser(prog='v2ray',
+parser = argparse.ArgumentParser(prog='v2ray-scraper',
                                  description='A simple program to extract v2ray and mtproto proxies from ' \
                                  'multiple telegram channels')
 
@@ -29,7 +30,64 @@ parser.add_argument('-p','--print-proxies',
 parser.add_argument('-d', '--disable-delay', action='store_true',
                     help = 'disables the random delays between connections to different telegram channels (not recommended!)')
 
-parser.add_argument('-r', '--retries', type=int, default=None,
+parser.add_argument('-r', '--retries', type=int, default=None, metavar='<retries>',
                     help='Set the number of retries when the connection to the telegram server is lost. (default: infinite).')
 
+parser.add_argument('--proxy', metavar='<proxy>', 
+                    help='Specify a proxy in the form: scheme://host:port. Supported: HTTP, SOCKS4 and SOCKS5')
+
 args = parser.parse_args()
+
+if args.proxy:
+    from socks import HTTP, SOCKS4, SOCKS5
+
+# --- termux support ---
+
+def is_termux():
+    is_android = subprocess.check_output(["uname", "-o"]).decode().strip() == "Android"
+    termux_path_exists = os.path.isdir("/data/data/com.termux/files/usr/bin")
+
+    return is_android and termux_path_exists
+
+def termux_copy(proxies : str):
+    subprocess.run("termux-clipboard-set", input=proxies.encode())
+
+def invalid_proxy():
+    print('Invalid proxy.')
+    exit(1)
+
+def specify_proxy(proxy : str):
+    try:
+        if args.proxy:
+            data_list = [None, None, None]
+            parsed_url = urlparse(proxy)
+
+            # ----- specifying scheme -----
+
+            if parsed_url.scheme == 'socks' or parsed_url.scheme == 'socks5':
+                data_list[0] = SOCKS5
+
+            elif parsed_url.scheme == 'socks4':
+                data_list[0] = SOCKS4
+
+            elif parsed_url.scheme == 'http':
+                data_list[0] = HTTP
+
+            else:
+                invalid_proxy()
+
+            # ----- specifying host and port -----
+            
+            splited_address = parsed_url.netloc.split(':')
+            if len(splited_address) == 2:
+                data_list[1], data_list[2] = splited_address[0], int(splited_address[1])
+            else:
+                invalid_proxy()
+
+            return data_list
+
+        else: # this executes when no proxy is entered
+            return None
+
+    except ValueError:
+        invalid_proxy()

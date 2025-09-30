@@ -1,23 +1,12 @@
-__version__ = '1.3.2'
+__version__ = '1.4.0'
 
-from cli_args import args
+from cli_args import *
 
-import asyncio, subprocess
+import asyncio
 from telethon.sync import TelegramClient
 from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.errors import ChannelPrivateError, PeerIdInvalidError
 import random, json, os, extractors
-
-# --- termux support ---
-
-def is_termux():
-    is_android = subprocess.check_output(["uname", "-o"]).decode().strip() == "Android"
-    termux_path_exists = os.path.isdir("/data/data/com.termux/files/usr/bin")
-
-    return is_android and termux_path_exists
-
-def termux_copy(proxies : str):
-    subprocess.run("termux-clipboard-set", input=proxies.encode())
 
 # --- checking for auto copy option enabled and the platform working on ---
 
@@ -130,7 +119,8 @@ async def main():
     handle_proxies_output(result_text)
 
 try:
-    with TelegramClient(session_name, api['api_id'], api['api_hash'], connection_retries=args.retries) as client:
+    with TelegramClient(session_name, api['api_id'], api['api_hash'], 
+                        connection_retries=args.retries, proxy=specify_proxy(args.proxy)) as client:
         client.loop.run_until_complete(main())
 except ConnectionError as err_msg:
     print(err_msg)
