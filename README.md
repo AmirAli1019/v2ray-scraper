@@ -26,6 +26,14 @@ pip install pyperclip
 pip install pysocks
 ```
 
+## ▶️ Usage
+
+Run the script:
+
+```bash
+python src/v2ray-scraper.py [options]
+```
+
 ## ⚙️ Configuration
 
 The configuration file is channels.json.
@@ -41,13 +49,6 @@ The configuration file is channels.json.
 By default, the script uses Telegram Desktop API keys, so you can run it without changes.
 However, you may replace them with your own api_id and api_hash if needed.
 
-## ▶️ Usage
-
-Run the script:
-
-```bash
-python src/v2ray.py [options]
-```
 
 ## Command Line Options
 
@@ -80,6 +81,9 @@ Next, install `telethon`:
 
 ```bash
 pip install telethon
+
+# optional (for proxy support)
+pip install pysocks
 ```
 
 But if you want clipboard support you cannot use `pyperclip` for that. Instead install [Termux:API](https://f-droid.org/packages/com.termux.api/) from F-Droid and the package `termux-api` on termux:
@@ -94,7 +98,7 @@ Then you can run it on your mobile in the same way you run it on your computer.
 
 ```bash
 # Extract V2Ray proxies, copy them to clipboard, and print to console
-python src/v2ray.py -v -c -p
+python src/v2ray-scraper.py -v -c -p
 ```
 
 ## ⚠️ Disclaimer
