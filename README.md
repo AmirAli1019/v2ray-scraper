@@ -10,8 +10,10 @@ First, install the required dependencies:
 
 ```bash
 pip install telethon
+
 # optional (for clipboard support)
 pip install pyperclip
+
 # optional (for proxy support)
 pip install pysocks
 ```
