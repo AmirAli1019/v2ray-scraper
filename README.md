@@ -1,3 +1,8 @@
+
+<p align="center">
+  <a href="README-fa.md">فارسی</a>
+</p>
+
 # v2ray Scraper
 
 This Python script connects to multiple Telegram channels and extracts proxy configurations from recent messages, including **V2Ray** and **MTProto** links.
@@ -34,6 +39,11 @@ Run the script:
 python src/v2ray-scraper.py [options]
 ```
 
+After you run the program for the first time. It asks you for your telegram account phone number and other login requirements.
+Actually it uses your telegram account to access channels so you can add a private channel to `channels.json` file. Edit this file according to the configuration guide below.
+
+*Warning: After logging in, a file with the extension `.session` will be created. this is the key to access your telegram account so you don't need to login every time you run the program, but notice that you must keep the `.session` file in a safe place to prevent others to access your telegram account*
+
 ## ⚙️ Configuration
 
 The configuration file is channels.json.
@@ -48,7 +58,6 @@ The configuration file is channels.json.
 
 By default, the script uses Telegram Desktop API keys, so you can run it without changes.
 However, you may replace them with your own api_id and api_hash if needed.
-
 
 ## Command Line Options
 
