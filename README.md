@@ -1,4 +1,3 @@
-
 <p align="center">
   <a href="README-fa.md">فارسی</a>
 </p>
@@ -73,8 +72,11 @@ However, you may replace them with your own api_id and api_hash if needed.
 |`-p,--print-proxies`|Print the extracted proxy configurations to the console|
 |`-d,--disable-delay`|disables the delays between connections to different telegram channels (not recommended!)|
 |`-r, --retries`|Set the number of retries when the connection to the telegram server is lost. (default: infinite).|
-|`--proxy`|Specify a proxy in the form: scheme://host:port. Supported: HTTP, SOCKS4 and SOCKS5|
+|`--proxy`|Specify a proxy in the form: scheme://host:port. Supported: HTTP, SOCKS4 and SOCKS5, MTProto|
 |`-h,--help`|Show the help message and exit|
+
+For `--proxy` argument the given MTProto proxy must be like this:
+`https://t.me/proxy?server=...&port=...&secret=...`
 
 ## Termux Support
 

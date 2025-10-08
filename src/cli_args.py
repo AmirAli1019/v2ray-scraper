@@ -1,5 +1,4 @@
 import argparse, subprocess, os
-from urllib.parse import urlparse
 
 parser = argparse.ArgumentParser(prog='v2ray-scraper',
                                  description='A simple program to extract v2ray and mtproto proxies from ' \
@@ -38,9 +37,6 @@ parser.add_argument('--proxy', metavar='<proxy>',
 
 args = parser.parse_args()
 
-if args.proxy:
-    from socks import HTTP, SOCKS4, SOCKS5
-
 # --- termux support ---
 
 def is_termux():
@@ -51,43 +47,3 @@ def is_termux():
 
 def termux_copy(proxies : str):
     subprocess.run("termux-clipboard-set", input=proxies.encode())
-
-def invalid_proxy():
-    print('Invalid proxy.')
-    exit(1)
-
-def specify_proxy(proxy : str):
-    try:
-        if args.proxy:
-            data_list = [None, None, None]
-            parsed_url = urlparse(proxy)
-
-            # ----- specifying scheme -----
-
-            if parsed_url.scheme == 'socks' or parsed_url.scheme == 'socks5':
-                data_list[0] = SOCKS5
-
-            elif parsed_url.scheme == 'socks4':
-                data_list[0] = SOCKS4
-
-            elif parsed_url.scheme == 'http':
-                data_list[0] = HTTP
-
-            else:
-                invalid_proxy()
-
-            # ----- specifying host and port -----
-            
-            splited_address = parsed_url.netloc.split(':')
-            if len(splited_address) == 2:
-                data_list[1], data_list[2] = splited_address[0], int(splited_address[1])
-            else:
-                invalid_proxy()
-
-            return data_list
-
-        else: # this executes when no proxy is entered
-            return None
-
-    except ValueError:
-        invalid_proxy()

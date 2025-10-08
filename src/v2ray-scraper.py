@@ -1,9 +1,10 @@
-__version__ = '1.4.0'
+__version__ = '1.5.0'
 
 from cli_args import *
+import proxy_argument_parsing
 
 import asyncio
-from telethon.sync import TelegramClient
+from telethon.sync import TelegramClient, connection
 from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.errors import ChannelPrivateError, PeerIdInvalidError
 import random, json, os, extractors
@@ -119,8 +120,17 @@ async def main():
     handle_proxies_output(result_text)
 
 try:
+    # ----- determining the connection type according to the type of proxy -----
+    if proxy_argument_parsing.is_mtproto(args.proxy):
+        connection_type = connection.ConnectionTcpMTProxyRandomizedIntermediate
+    else:
+        connection_type = connection.ConnectionTcpFull
+
+    # ----- starting the program -----
+
     with TelegramClient(session_name, api['api_id'], api['api_hash'], 
-                        connection_retries=args.retries, proxy=specify_proxy(args.proxy)) as client:
+                        connection_retries=args.retries, proxy=proxy_argument_parsing.get_proxy_components(args.proxy),
+                        connection=connection_type) as client:
         client.loop.run_until_complete(main())
-except ConnectionError as err_msg:
-    print(err_msg)
+except ConnectionError as error_msg:
+    print(error_msg)
