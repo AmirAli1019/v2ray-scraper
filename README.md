@@ -41,7 +41,9 @@ python src/v2ray-scraper.py [options]
 After you run the program for the first time. It asks you for your telegram account phone number and other login requirements.
 Actually it uses your telegram account to access channels so you can add a private channel to `channels.json` file. Edit this file according to the configuration guide below.
 
-*Warning: After logging in, a file with the extension `.session` will be created. this is the key to access your telegram account so you don't need to login every time you run the program, but notice that you must keep the `.session` file in a safe place to prevent others to access your telegram account*
+For scraping data from private channels ensure that you have joined them in telegram.
+
+**Warning: After logging in, a file with the extension `.session` will be created. this is the key to access your telegram account so you don't need to login every time you run the program, but notice that you must keep the `.session` file in a safe place to prevent others to access your telegram account**
 
 ## ⚙️ Configuration
 
