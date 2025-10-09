@@ -119,3 +119,12 @@ python src/v2ray-scraper.py -v -c -p
 I do not support any use of this tool for censorship, surveillance, or any form of human rights violation.
 
 By using this code, you agree to take full responsibility for how it is used.
+
+## Credits / Attribution
+
+This project was originally inspired by a small script which was published on Telegram with no specified license.
+This repository include some portions from the first version with many modifications and new feature.
+
+The link of first version on Telegram: [Telegram source](https://t.me/SoniaNotes/1015)
+
+If the original author identifies themselves and requests changes, I will fully comply.
