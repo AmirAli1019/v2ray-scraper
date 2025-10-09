@@ -7,7 +7,8 @@ def invalid_proxy():
     exit(1)
 
 def is_mtproto(proxy_string : str):
-    return proxy_string.startswith('https://t.me/proxy?server')
+    if proxy_string:
+        return proxy_string.startswith('https://t.me/proxy?server')
 
 def parse_mtproto_proxy(proxy_string : str):
     url_queries = urlparse(proxy_string).query.split('&')
