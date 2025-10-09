@@ -125,6 +125,6 @@ By using this code, you agree to take full responsibility for how it is used.
 This project was originally inspired by a small script which was published on Telegram with no specified license.
 This repository include some portions from the first version with many modifications and new feature.
 
-The link of first version on Telegram: [Telegram source](https://t.me/SoniaNotes/1015)
+The link of first version on Telegram (may be unavailable in future): [Telegram source](https://t.me/SoniaNotes/1015)
 
 If the original author identifies themselves and requests changes, I will fully comply.
