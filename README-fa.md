@@ -26,7 +26,7 @@ pip install telethon
 # اختیاری (برای پشتیبانی از کلیپ‌بورد)
 pip install pyperclip
 
-# اختیاری (برای پشتیبانی از پروکسی)
+# اختیاری (برای پشتیبانی از پراکسی) این مورد برای پراکسی‌های HTTP، SOCKS5 و SOCKS4 لازم است. اما telethon می‌تواند خودش به پراکسی‌های MTProto متصل شود و برای پراکسی‌های MTProto نیازی به pysocks نیست.
 pip install pysocks
 ```
 

@@ -26,7 +26,7 @@ pip install telethon
 # optional (for clipboard support)
 pip install pyperclip
 
-# optional (for proxy support)
+# optional (for proxy support) it is needed for HTTP, SOCKS5 and SOCKS4 proxies. But telethon can connect to MTProto proxies itself and pysocks is not needed for MTProto proxies.
 pip install pysocks
 ```
 
