@@ -36,8 +36,8 @@ adjustment, I will fully cooperate to make the necessary changes.
 '''
 __version__ = '1.5.1'
 
-from cli_args import *
-import proxy_argument_parsing
+from cli.cli_args import *
+from cli import proxy_argument_parsing
 
 import asyncio
 from telethon.sync import TelegramClient, connection
