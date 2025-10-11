@@ -34,10 +34,12 @@ First version resource (maybe unavailable in future): https://t.me/SoniaNotes/10
 If the original author identifies themselves and requests removal or attribution
 adjustment, I will fully cooperate to make the necessary changes.
 '''
-__version__ = '1.5.1'
+__version__ = '1.5.2'
 
 from cli.cli_args import *
-from cli import proxy_argument_parsing
+
+if args.proxy:
+    from cli import proxy_argument_parsing
 
 import asyncio
 from telethon.sync import TelegramClient, connection
@@ -157,15 +159,24 @@ async def main():
 
 try:
     # ----- determining the connection type according to the type of proxy -----
-    if proxy_argument_parsing.is_mtproto(args.proxy):
-        connection_type = connection.ConnectionTcpMTProxyRandomizedIntermediate
+    connection_type = connection.ConnectionTcpFull
+
+    if args.proxy:
+        if proxy_argument_parsing.is_mtproto(args.proxy):
+            connection_type = connection.ConnectionTcpMTProxyRandomizedIntermediate
+
+    # ----- determining the proxy -----
+
+    if args.proxy:
+        proxy = proxy_argument_parsing.get_proxy_components(args.proxy)
+
     else:
-        connection_type = connection.ConnectionTcpFull
+        proxy = None
 
     # ----- starting the program -----
 
     with TelegramClient(session_name, api['api_id'], api['api_hash'], 
-                        connection_retries=args.retries, proxy=proxy_argument_parsing.get_proxy_components(args.proxy),
+                        connection_retries=args.retries, proxy=proxy,
                         connection=connection_type) as client:
         client.loop.run_until_complete(main())
 except ConnectionError as error_msg:

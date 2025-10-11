@@ -1,5 +1,5 @@
 from urllib.parse import urlparse
-from socks import HTTP, SOCKS4, SOCKS5
+
 import re
 
 def invalid_proxy():
@@ -7,8 +7,7 @@ def invalid_proxy():
     exit(1)
 
 def is_mtproto(proxy_string : str):
-    if proxy_string:
-        return proxy_string.startswith('https://t.me/proxy?server')
+    return proxy_string.startswith('https://t.me/proxy?server')
 
 def parse_mtproto_proxy(proxy_string : str):
     url_queries = urlparse(proxy_string).query.split('&')
@@ -31,6 +30,8 @@ def parse_mtproto_proxy(proxy_string : str):
     return data_list
 
 def parse_normal_proxy(proxy_string : str):
+    from socks import HTTP, SOCKS4, SOCKS5
+
     data_list = [None, None, None]
     parsed_url = urlparse(proxy_string)
 
