@@ -84,8 +84,11 @@ However, you may replace them with your own api_id and api_hash if needed.
 |`--proxy`|Specify a proxy in the form: scheme://host:port. Supported: HTTP, SOCKS4 and SOCKS5, MTProto|
 |`-h,--help`|Show the help message and exit|
 
-For `--proxy` argument the given MTProto proxy must be like this:
-`https://t.me/proxy?server=...&port=...&secret=...`
+For `--proxy` argument the given MTProto proxy must be like this: `https://t.me/proxy?server=...&port=...&secret=...`
+
+**note: Always remember to put the MTProto link in a pair of quotation characters link this:
+`--proxy "https://t.me/proxy?server=...&port=...&secret=..."`
+Maybe your shell consider some of chracters in the MTProto link as codes and causes unexcepted outputs.**
 
 ## Termux Support
 

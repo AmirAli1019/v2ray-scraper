@@ -85,6 +85,8 @@ python src/v2ray-scraper.py [options]
 برای آرگومان `--proxy`، پروکسی MTProto داده شده باید به این شکل باشد:
 `https://t.me/proxy?server=...&port=...&secret=...`
 
+**توجه: همیشه به یاد داشته باشید که لینک MTProto را در یک جفت علامت نقل قول قرار دهید مانند این:`--proxy "https://t.me/proxy?server=...&port=...&secret=..."`شاید شِل شما برخی از کاراکترها در لینک MTProto را به عنوان کد در نظر بگیرد و باعث ایجاد خروجی‌های غیرمنتظره شود.**
+
 ## پشتیبانی از Termux
 
 می‌توانید از `v2ray-scraper` در اندروید با استفاده از **Termux** استفاده کنید. ابتدا آن را از **[f-droid](https://f-droid.org/packages/com.termux/)** دانلود کنید.
