@@ -30,6 +30,14 @@ pip install pyperclip
 pip install pysocks
 ```
 
+من در حین ساخت این برنامه از این نسخه ها استفاده می کردم:
+
+```
+telethon 1.41.2
+pysocks 1.7.1
+pyperclip 1.11.0
+```
+
 ## ▶️ نحوه استفاده
 
 اسکریپت را اجرا کنید:

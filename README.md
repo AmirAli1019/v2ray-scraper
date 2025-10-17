@@ -30,6 +30,13 @@ pip install pyperclip
 pip install pysocks
 ```
 
+I was using these versions while developing this program:
+```
+telethon 1.41.2
+pysocks 1.7.1
+pyperclip 1.11.0
+```
+
 ## ▶️ Usage
 
 Run the script:
