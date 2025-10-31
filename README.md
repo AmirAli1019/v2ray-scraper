@@ -32,7 +32,7 @@ pip install pysocks
 
 I was using these versions while developing this program:
 ```
-telethon 1.41.2
+telethon 1.41.2 (This version of telethon does not work with python3.14)
 pysocks 1.7.1
 pyperclip 1.11.0
 ```
