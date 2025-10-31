@@ -111,10 +111,11 @@ def handle_proxies_output(result_text):
 # --- the main program ---
 
 async def main():
+    channel_number = 1
     result_text = ""
     for channel_identifier in channels:
         try:
-            print(f"Attempting to connect to channel: {channel_identifier} ...")
+            print(f"{channel_number}. Attempting to connect to channel: {channel_identifier} ...")
             channel = await client.get_entity(channel_identifier)
 
             if not args.disable_delay:
@@ -154,6 +155,9 @@ async def main():
             error_msg = f"An unexpected error occurred for '{channel_identifier}': {type(e).__name__} - {e}"
             print(error_msg)
             result_text += f"\n\n--- Channel: {channel_identifier} ---\n{error_msg}\n"
+
+        finally:
+            channel_number += 1
 
     handle_proxies_output(result_text)
 
