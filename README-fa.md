@@ -33,9 +33,14 @@ pip install pysocks
 من در حین ساخت این برنامه از این نسخه ها استفاده می کردم:
 
 ```
-telethon 1.41.2
+telethon 1.41.2 (این نسخه از telethon روی python 3.14 کار نمی کند)
 pysocks 1.7.1
 pyperclip 1.11.0
+```
+
+برای نصب تمام این وابستگی ها با نسخه های مشخص شده دستور زیر را اجرا کنید:
+```
+pip install -r requirements.txt
 ```
 
 ## ▶️ نحوه استفاده

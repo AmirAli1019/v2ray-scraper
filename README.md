@@ -37,6 +37,11 @@ pysocks 1.7.1
 pyperclip 1.11.0
 ```
 
+To install all these dependencies with specified versions:
+```
+pip install -r requirements.txt
+```
+
 ## ▶️ Usage
 
 Run the script:
