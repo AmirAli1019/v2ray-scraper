@@ -4,6 +4,7 @@
 
 **/*.session
 **/*.txt
+!requirements.txt
 **/*.bat
 **/*.sh
 **/*.swp
