@@ -16,7 +16,7 @@
 git clone https://github.com/AmirAli104/v2ray-scraper
 ```
 
-یا به عنوان گزینه‌ای بهتر، آخرین نسخه را از صفحه **[Releases](https://github.com/AmirAli104/v2ray-scraper/releases)** دانلود کنید.
+یا به عنوان گزینه‌ای بهتر، آخرین نسخه را از صفحه **[Releases](https://github.com/AmirAli1019/v2ray-scraper/releases)** دانلود کنید.
 
 وابستگی‌های مورد نیاز را نصب کنید:
 
