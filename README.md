@@ -16,7 +16,7 @@ Fisrt, clone the repository:
 git clone https://github.com/AmirAli104/v2ray-scraper
 ```
 
-Or as a better option download the lastest release from the [releases](https://github.com/AmirAli104/v2ray-scraper/releases) page.
+Or as a better option download the lastest release from the [releases](https://github.com/AmirAli1019/v2ray-scraper/releases) page.
 
 Install the required dependencies:
 
