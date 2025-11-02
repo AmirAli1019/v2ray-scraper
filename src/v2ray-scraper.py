@@ -34,7 +34,7 @@ First version resource (maybe unavailable in future): https://t.me/SoniaNotes/10
 If the original author identifies themselves and requests removal or attribution
 adjustment, I will fully cooperate to make the necessary changes.
 '''
-__version__ = '1.5.2'
+__version__ = '1.5.3'
 
 from cli.cli_args import *
 
