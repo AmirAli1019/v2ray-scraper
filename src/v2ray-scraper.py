@@ -102,7 +102,7 @@ def handle_proxies_output(result_text):
     if args.save_extracted:
         with open(args.save_extracted,'w',encoding='utf-8') as f:
             f.write(proxies)
-        
+
         print(f'All extracted proxy configs have been save to {args.save_extracted!r}')
 
     if args.print_proxies:
@@ -115,11 +115,11 @@ async def main():
     result_text = ""
     for channel_identifier in channels:
         try:
-            print(f"{channel_number}. Attempting to connect to channel: {channel_identifier} ...")
-            channel = await client.get_entity(channel_identifier)
-
             if not args.disable_delay:
                 await asyncio.sleep(random.uniform(1,1.6))
+
+            print(f"{channel_number}. Attempting to connect to channel: {channel_identifier} ...")
+            channel = await client.get_entity(channel_identifier)
 
             history = await client(GetHistoryRequest(
                 peer=channel,
@@ -133,16 +133,16 @@ async def main():
             ))
 
             messages = history.messages
-            
+
             result_text += f"\n\n--- Channel: {channel.title} ({channel_identifier}) ---\n"
             print(f"Reading messages from '{channel.title}'...")
-            
+
             message_count = 0
             for msg in messages:
                 if msg.message:
                     result_text += msg.message + '\n'
                     message_count += 1
-            
+
             if message_count == 0:
                 result_text += "No text messages were found in this channel.\n"
 
@@ -179,7 +179,7 @@ try:
 
     # ----- starting the program -----
 
-    with TelegramClient(session_name, api['api_id'], api['api_hash'], 
+    with TelegramClient(session_name, api['api_id'], api['api_hash'],
                         connection_retries=args.retries, proxy=proxy,
                         connection=connection_type) as client:
         client.loop.run_until_complete(main())
