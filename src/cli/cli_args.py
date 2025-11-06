@@ -1,7 +1,7 @@
 import argparse, subprocess, os
 
 parser = argparse.ArgumentParser(prog='v2ray-scraper',
-                                 description='A simple program to extract v2ray and mtproto proxies from ' \
+                                 description='A simple program to extract v2ray and mtproto proxies from '
                                  'multiple telegram channels')
 
 parser.add_argument('-v','--v2ray', action='store_true', help='Extract v2ray proxies')
