@@ -91,7 +91,7 @@ However, you may replace them with your own api_id and api_hash if needed.
 
 For `--proxy` argument the given MTProto proxy must be like this: `https://t.me/proxy?server=...&port=...&secret=...`
 
-**note: Always remember to put the MTProto link in a pair of quotation characters link this:
+**note: Always remember to put the MTProto link in a pair of quotation characters like this:
 `--proxy "https://t.me/proxy?server=...&port=...&secret=..."`
 Maybe your shell consider some of chracters in the MTProto link as codes and causes unexcepted outputs.**
 
