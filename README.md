@@ -31,6 +31,7 @@ pip install pysocks
 ```
 
 I was using these versions while developing this program:
+
 ```
 telethon 1.41.2 (This version of telethon does not work with python3.14)
 pysocks 1.7.1
@@ -38,6 +39,7 @@ pyperclip 1.11.0
 ```
 
 To install all these dependencies with specified versions:
+
 ```
 pip install -r requirements.txt
 ```
@@ -63,11 +65,11 @@ The configuration file is channels.json.
 
 - It contains:
 
-    - A list of Telegram channels.
+  - A list of Telegram channels.
 
-    - api_id and api_hash (needed for Telegram API authentication).
+  - api_id and api_hash (needed for Telegram API authentication).
 
-    - For each channel, you can specify how many recent messages to fetch.
+  - For each channel, you can specify how many recent messages to fetch.
 
 By default, the script uses Telegram Desktop API keys, so you can run it without changes.
 However, you may replace them with your own api_id and api_hash if needed.
@@ -102,7 +104,7 @@ Then clone the repo and install python3:
 
 ```bash
 pkg install git python3
-git clone https://github.com/amirali104/v2ray-scraper
+git clone https://github.com/amirali1019/v2ray-scraper
 ```
 
 Next, install `telethon`:
