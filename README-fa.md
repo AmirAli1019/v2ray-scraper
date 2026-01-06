@@ -13,7 +13,7 @@
 ابتدا، مخزن را کلون کنید:
 
 ```bash
-git clone https://github.com/AmirAli104/v2ray-scraper
+git clone https://github.com/AmirAli1019/v2ray-scraper
 ```
 
 یا به عنوان گزینه‌ای بهتر، آخرین نسخه را از صفحه **[Releases](https://github.com/AmirAli1019/v2ray-scraper/releases)** دانلود کنید.
@@ -99,7 +99,7 @@ python src/v2ray-scraper.py [options]
 
 ```bash
 pkg install git python3
-git clone [https://github.com/amirali104/v2ray-scraper](https://github.com/amirali104/v2ray-scraper)
+git clone [https://github.com/amirali1019/v2ray-scraper](https://github.com/amirali104/v2ray-scraper)
 ```
 
 در مرحله بعد، `telethon` را نصب کنید:
