@@ -2,7 +2,7 @@
   <a href="README-fa.md">فارسی</a>
 </p>
 
-# v2ray Scraper
+# v2ray scraper
 
 This Python script connects to multiple Telegram channels and groups and extracts proxy configurations from recent messages, including **V2Ray** and **MTProto** links.
 
