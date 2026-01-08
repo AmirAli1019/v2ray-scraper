@@ -98,6 +98,7 @@ python src/v2ray-scraper.py [options]
 سپس مخزن را کلون کرده و پایتون 3 را نصب کنید:
 
 ```bash
+apt update && apt upgrade -y
 pkg install git python3
 git clone https://github.com/amirali1019/v2ray-scraper
 ```
