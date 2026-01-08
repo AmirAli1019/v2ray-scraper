@@ -99,7 +99,7 @@ python src/v2ray-scraper.py [options]
 
 ```bash
 pkg install git python3
-git clone [https://github.com/amirali1019/v2ray-scraper](https://github.com/amirali104/v2ray-scraper)
+git clone https://github.com/amirali1019/v2ray-scraper
 ```
 
 در مرحله بعد، `telethon` را نصب کنید:
