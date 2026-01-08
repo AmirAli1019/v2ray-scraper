@@ -33,7 +33,7 @@ pip install pysocks
 من در حین ساخت این برنامه از این نسخه ها استفاده می کردم:
 
 ```
-telethon 1.41.2 & 1.42.0 (این نسخه از telethon روی python 3.14 کار نمی کند)
+telethon 1.41.2 & 1.42.0 (این نسخه ها از telethon روی python 3.14 کار نمی کنند)
 pysocks 1.7.1
 pyperclip 1.11.0
 ```
