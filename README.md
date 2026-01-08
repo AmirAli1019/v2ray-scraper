@@ -103,6 +103,7 @@ You can use `v2ray-scraper` on android using Termux. First download it from [f-d
 Then clone the repo and install python3:
 
 ```bash
+apt update && apt upgrade -y
 pkg install git python3
 git clone https://github.com/amirali1019/v2ray-scraper
 ```
