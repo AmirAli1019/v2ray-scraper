@@ -89,6 +89,7 @@ However, you may replace them with your own api_id and api_hash if needed.
 |`-d,--disable-delay`|disables the delays between connections to different telegram channels (not recommended!)|
 |`-r, --retries`|Set the number of retries when the connection to the telegram server is lost. (default: infinite).|
 |`--proxy`|Specify a proxy in the form: scheme://host:port. Supported: HTTP, SOCKS4 and SOCKS5, MTProto|
+|`--delay`|Specify the random delay interval in seconds in the format \<min\>-\<max\>. (default: 1.0-1.6)|
 |`-h,--help`|Show the help message and exit|
 
 For `--proxy` argument the given MTProto proxy must be like this: `https://t.me/proxy?server=...&port=...&secret=...`
