@@ -39,8 +39,6 @@ __version__ = "1.6.0"
 
 from cli import cli_args
 
-from types import ModuleType
-
 from telethon.sync import TelegramClient, connection
 from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.errors import ChannelPrivateError, PeerIdInvalidError
@@ -51,15 +49,12 @@ import json
 import os
 import random
 
-proxy_argument_parsing: None | ModuleType = ModuleType("proxy_argument_parsing")
+proxy_argument_parsing = None
 
 if cli_args.args.proxy:
     from cli import proxy_argument_parsing
 
 # --- checking for auto copy option enabled and the platform working on ---
-
-# copy_function: None | Callable = None
-
 
 def set_copy_function():
     if os.name == "posix":
